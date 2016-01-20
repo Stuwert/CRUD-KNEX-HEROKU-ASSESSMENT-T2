@@ -21,6 +21,12 @@ router.get('/:id', function(req, res, next){
   })
 })
 
+router.get('/:id/edit', function(req, res, next){
+  Posts().where('id', req.params.id).first().then(function(post){
+    res.json({'SUCCESS' : post})
+  })
+})
+
 
 function Posts(){
   return knex('posts');
