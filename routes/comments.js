@@ -16,13 +16,13 @@ router.post('/:post_id/comments', function(req, res, next){
 })
 
 router.get('/:post_id/comments/:id', function(req, res, next){
-  Comments().where('id', req.params.id).then(function(post){
+  Comments().where('id', req.params.id).first().then(function(post){
     res.json({'SUCCESS' : post})
   })
 })
 
 router.get('/:post_id/comments/:id/edit', function(req, res, next){
-  Comments().where('id', req.params.id).then(function(post){
+  Comments().where('id', req.params.id).first().then(function(post){
     res.json({'SUCCESS' : post})
   })
 })
