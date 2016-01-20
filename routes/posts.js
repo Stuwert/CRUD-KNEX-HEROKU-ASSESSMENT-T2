@@ -27,6 +27,12 @@ router.get('/:id/edit', function(req, res, next){
   })
 })
 
+router.post('/:id', function(req, res, next){
+  Posts().where('id', req.params.id).update(req.body).then(function(post){
+    res.redirect('/')
+  })
+})
+
 
 function Posts(){
   return knex('posts');
