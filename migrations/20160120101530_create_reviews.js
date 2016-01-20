@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('reviews', function(table){
+  return knex.schema.createTable('comments', function(table){
     table.increments();
     table.integer('post_id');
     table.string('commenter');
