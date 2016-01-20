@@ -11,7 +11,7 @@ describe('Post Comments CRUD Routes', function() {
   beforeEach(function () {
     return knex.seed.run(knex.config);
   });
-  xit('should use knex migrations', function () {
+  it('should use knex migrations', function () {
   return knex('knex_migrations').select().then(function (migrations) {
     assert.equal(migrations.length, 2);
     })
@@ -20,9 +20,11 @@ describe('Post Comments CRUD Routes', function() {
     chai.request(server)
     .get('/posts').end(function (err, res) {
       var thePost=res.body.SUCCESS[1];
+      console.log(thePost);
       chai.request(server)
       .get('/posts/'+thePost.id+'/comments')
       .end(function(err, response){
+        console.log(thePost.id);
         response.should.have.status(200);
         response.body.SUCCESS.should.have.length(2);
         response.body.SUCCESS[0].should.have.property('post_id');
